@@ -1,68 +1,15 @@
-# def concatena(n,k):
-#     if k == 1:        
-#         return(n)
-#     return (str(n) + ' ' + (concatena( str(n), k-1)))
+def soma_elementos(lista_p):
+    if len(lista_p) == 1:
+        return lista_p[0]
+    else:
+        return lista_p[0] + soma_elementos(lista_p[1:])
+n = input('Digite o seu número ')
+k = int(input('Digite a quantidade de vezes '))
 
-    
-# print(concatena(9875,4))
-# teste1 = concatena(9875,4)
+n_lista = [int(elemento) for elemento in n]
+p = n_lista * k 
 
-# str(9875) * 4 
-# str(n) * k 
-# n = 9875
-# k = 4
-# nova = str(n) + ' '
-# nova*k
-
-
-# def super_digit(n,k):
-#     nova = (str(n) + ' ')*k
-#     while k != 1:
-#         nova = str(n) * k
-#         k -= 1
-#     lista = list(nova.replace(" ",""))
-#     #print(lista)
-#     nova_lista = []
-#     for elemento in lista:
-#         nova_lista.append((int(elemento)))
-#         soma = sum(nova_lista)
-#     if soma > 10:
-#         return super_digit(str(soma))
-#     else:
-#         print(soma)
-#         return (soma)
-        
-#super_digit(n,k)
-
-# def sum_of_digit( p ):
-#     if p == 0:
-#         return 0
-
-#     return (p % 10 + sum_of_digit(int(p / 10)))
-
-# print(sum_of_digit(p))
-n= str(input('Insira o número '))
-k= int(input('Insira a quantidade de vezes '))
-p = list(n*k)
-print(p)
-def soma_dos_digitos(p):
-    soma = 0
-    if len(p) > 1:
-        for elemento in p:
-            inteiro = int(elemento)
-            soma += inteiro
-            return soma_dos_digitos(soma)
-    print(soma)
-    return(soma)
-soma_dos_digitos(p)
-
-
-# lista = list(p)
-# nova_lista = []
-# for elemento in lista:
-#     nova_lista.append(int(elemento))
-#     soma = sum(nova_lista)
-
-# for elemento in lista:
-#          nova_lista.append((int(elemento)))
-#          soma = sum(nova_lista)
+while len(p) > 1:
+    resultado = soma_elementos(p)
+    p = [int(numero) for numero in str(resultado)]
+print('O super digito é',resultado)
