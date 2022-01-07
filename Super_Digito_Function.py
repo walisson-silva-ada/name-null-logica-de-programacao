@@ -1,15 +1,19 @@
-def soma_elementos(lista_p):
-    if len(lista_p) == 1:
-        return lista_p[0]
-    else:
-        return lista_p[0] + soma_elementos(lista_p[1:])
-n = input('Digite o seu número ')
-k = int(input('Digite a quantidade de vezes '))
-
-n_lista = [int(elemento) for elemento in n]
-p = n_lista * k 
-
-while len(p) > 1:
-    resultado = soma_elementos(p)
-    p = [int(numero) for numero in str(resultado)]
-print('O super digito é',resultado)
+def concatena(n,k): 
+    if k == 1:         
+        return(n) 
+    return (n + concatena(n, k-1)) 
+ 
+def super_digit(p): 
+    lista = list(p) 
+    nova_lista = [int(numero) for numero in lista] 
+    soma = sum(nova_lista) 
+    if soma > 10: 
+        return super_digit(str(soma)) 
+    else: 
+        print(soma)
+        return (soma) 
+        
+ 
+n, k = input('Insira aqui o número x que deseja '), int(input('Insira a quantidade k de vezes desse número ')) 
+p = concatena(n,k)         
+super_digit(p)
